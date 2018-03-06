@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
 			$admin->surname = 'admin';
 			$admin->date = '1989-02-06';
 			$admin->email = 'admin@admin.lt';
-			$admin->password = 'admin';
+			$admin->password = Hash::make('admin');
 			$admin->phone = '+37064739059';
 			$admin->address = 'Toli-toli kazkur';
 			$admin->city = 'Vilnius';
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
 			$user->surname = 'simple';
 			$user->date = $faker->dateTimeThisCentury($max = 'now', $timezone = null); // date of birth
 			$user->email = 'simple@simple.lt';
-			$user->password = 'simple';
+			$user->password = Hash::make('simple');;
 			$user->phone = 'nera';
 			$user->address = 'cia';
 			$user->city = 'Vilnius';
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
 				$user->surname = $faker->lastName;
 				$user->date = $faker->dateTimeThisCentury($max = 'now', $timezone = null); // date of birth
 				$user->email = $faker->email;
-				$user->password = $faker->password;
+				$user->password = Hash::make($faker->password);
 				$user->phone = $faker->e164PhoneNumber;
 				$user->address = $faker->address;
 				$user->city = $faker->city;
