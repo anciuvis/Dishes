@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(); // sukuria routus registracijai, loginui bei 
+Auth::routes(); // sukuria routus registracijai, loginui bei pass resetui
 
 Route::get('/home', 'HomeController@index')->name('home');
