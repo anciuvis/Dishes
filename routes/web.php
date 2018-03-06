@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dishes');
-});
+// Route::get('/', function () {
+// 	return view('dishes');
+// });
 
 Auth::routes(); // sukuria routus registracijai, loginui bei pass resetui
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dishes', 'DishController@get')->name('dishes');
+Route::get('/', 'DishController@index')->name('dishes');
+Route::get('/dish/{id}', 'DishController@show')->name('dishes.show');
