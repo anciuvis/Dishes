@@ -1,9 +1,9 @@
-<article class="card my-1 mx-0 p-3">
-	<div class="ard-block text-center shadow">
-		<div class="img-card">
-			<img src="" class="mx-auto img-responsive w-100 my-1" alt="picture"/>
+<ul class="list-group col-md-4">
+	<li class="list-group-item list-group-item-success">{{ $dish->title }}</li>
+		<li class="list-group-item">
+			<img src="{{ $dish->image_url }}" class="mx-auto img-responsive w-100 my-1" alt="picture"/>
 		</div>
-		<h2 class="card-text text-left">{{ $dish->title }}</h2>
+		<h2 class="card-text text-left"></h2>
 		<p class="card-text text-left px-2 py-1">Price:
 			<span class="d-block badge badge-pill badge-success px-2 py-1">{{ $dish->price }}</span>
 		</p>
