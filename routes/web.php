@@ -12,9 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dishes');
 });
 
 Auth::routes(); // sukuria routus registracijai, loginui bei pass resetui
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dishes', 'DishController@get')->name('dishes');

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<!-- path to extention - layouts/app.blade.php . 'layouts.app' - trumpinis, taskas reiskia slasha -->
 
 @section('content')
 <div class="container">
