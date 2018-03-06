@@ -53,6 +53,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+						
+
         ]);
     }
 
@@ -65,7 +67,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 				return User::create(Input::all());
-				// kai pridedam virsuj use sita inputa, jis leidzia paimti visa info ivesta urmu, nereikia rasyti daug eiluciu. butina viska aprasyti User modelyje $fillable
+				// kai pridedam virsuj use sita inputa, jis leidzia paimti visa info ivesta urmu, nereikia rasyti daug eiluciu - butina viska aprasyti User modelyje kas yra $fillable, o ten gali buti daug
+
         // return User::create([
         //     'name' => $data['name'],
         //     'email' => $data['email'],
