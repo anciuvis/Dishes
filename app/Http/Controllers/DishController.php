@@ -69,20 +69,18 @@ class DishController extends Controller
 	public function update(Request $request) {
 		// echo 'update';
 		$this->validation($request);
-		$product = Product::find($request->id);
-		$product->title = $request->title;
-		$product->price = $request->price;
-		$product->quantity = $request->quantity;
-		$product->description = $request->description;
-		$product->category = $request->category;
-		$product->manufacturer = $request->manufacturer;
-		$product->save();
-		return redirect()->route('products.show', $product->id);
+		$dish = Dish::find($request->id);
+		$dish->title = $request->title;
+		$dish->price = $request->price;
+		$dish->image_url = $request->image_url;
+		$dish->description = $request->description;
+		$dish->save();
+		return redirect()->route('products.show', $dish->id);
 	}
 
 	public function destroy(Request $request) {
-		$dish = Product::find($request->id)->get();
-		// $dish = Product::find($request->id)->first(); - jeigu reikia viena elementa pasirinkti
+		$dish = Dish::find($request->id);
+		// $dish = Dish::find($request->id); // - jeigu reikia viena elementa pasirinkti
 		$dish->delete();
 		return redirect()->route('dishes');
 	}

@@ -1,0 +1,39 @@
+@extends('layouts.app') <!-- cia lygu layouts/app - kelias iki failo is esmes, taskas lygu slashui -->
+@section('content')
+	<body>
+		<div class="container w-75">
+			<h2 class="text-center">Update Dish form</h2>
+			<form action="{{ route('dishes.update', $dish->id) }}" method="POST" class="needs-validation">
+				@csrf
+				@method('PUT')
+				<div class="form-group">
+					<label class="px-3" for="title">Title</label>
+					<input name="title" type="text" class="form-control px-3 @if($errors->has('title')) is-invalid @endif" id="title" placeholder="Enter title" value="{{ old('title', $dish->title) }}">
+					@if($errors->has('title'))
+					<div class="invalid-feedback px-3">
+						{{ $errors->first('title') }}
+					</div>
+					@endif
+				</div>
+				<div class="form-group">
+					<input name="price" type="number" step="0.01" class="form-control px-3 @if($errors->has('price')) is-invalid @endif" id="price" placeholder="Price"  value="{{ old('price', $dish->price) }}">
+					@if($errors->has('price'))
+					<div class="invalid-feedback px-3">
+						{{ $errors->first('price') }}
+					</div>
+					@endif
+				</div>
+				<div class="form-group">
+					<label class="px-3" for="description">Description</label>
+					<textarea name="description" class="form-control @if($errors->has('description')) is-invalid @endif" id="description" rows="3" placeholder="Description">{{ old('description', $dish->description) }}</textarea>
+					@if($errors->has('description'))
+					<div class="invalid-feedback px-3">
+						{{ $errors->first('description') }}
+					</div>
+					@endif
+				</div>
+				<button type="submit" class="btn btn-primary">Update</button>
+			</form>
+		</div>
+	</body>
+@endsection

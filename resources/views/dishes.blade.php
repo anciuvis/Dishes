@@ -5,7 +5,12 @@
 			<section>
 				<div class="row justify-content-center">
 						@foreach($dishes as $dish)
-										@component('components/card', ['dish'=>$dish, 'single' => FALSE])
+										@component('components/card', [
+										'dish'		=> $dish,
+										'single' 	=> FALSE,
+										'name' 		=> 'Delete Dish',
+										'route'		=> 'dishes.destroy',
+										])
 										@endcomponent
 						@endforeach
 				</div>

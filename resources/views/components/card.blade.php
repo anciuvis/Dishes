@@ -12,4 +12,10 @@
 		<form method="POST" action="">
 			<a href="#" class="js-add-to-cart btn btn-info btn-block" name="read">Add to cart</a>
 		</form>
+		@component('components/delete', [
+			'id' 		=> $dish->id,
+			'name' 	=> $name,
+			'route' => $route
+		])
+		@endcomponent
 </ul>
