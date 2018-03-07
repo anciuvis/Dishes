@@ -41,7 +41,7 @@
 					</div>
 					@endif
 				</div>
-				<button type="submit" class="btn btn-primary">Update</button>
+				<button type="submit" class="btn btn-primary">Update Dish information</button>
 			</form>
 		</div>
 	</body>
