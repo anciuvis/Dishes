@@ -14,7 +14,7 @@
 		</form>
 		@component('components/delete', [
 			'id' 		=> $dish->id,
-			'name' 	=> $name,
+			'name'	=> $name,
 			'route' => $route
 		])
 		@endcomponent

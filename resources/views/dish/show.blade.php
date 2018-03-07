@@ -7,7 +7,12 @@
 			</div>
 			<section>
 				<div class="row justify-content-center">
-						@component('components/card', ['dish'=>$dish, 'single' => TRUE])
+						@component('components/card', [
+							'dish'		=> $dish,
+							'single' 	=> TRUE,
+							'name' 		=> 'Delete this Dish',
+							'route'		=> 'dishes.destroy',
+						])
 						@endcomponent
 				</div>
 			</section>
