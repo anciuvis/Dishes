@@ -8,6 +8,10 @@ use App\Dish;
 
 class DishController extends Controller
 {
+	public function __construct() {
+		$this->middleware('admin')->except('index', 'show');
+	}
+
 	public function index()
 	{
 		$dishes = Dish::all();
