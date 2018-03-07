@@ -24,8 +24,7 @@ class DishController extends Controller
 	}
 
 	public function create() {
-		return view('product/create');
-
+		return view('dish/create');
 	}
 
 	private function validation(Request $request) {
