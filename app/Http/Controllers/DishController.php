@@ -38,7 +38,7 @@ class DishController extends Controller
 		$request->validate([
 			'title' 				=> 'required|max:300',
 			'price' 				=> 'required|numeric|min:0|max:100',
-			'description' 	=> 'required|max:1000',
+			'description' 	=> 'required|max:2000',
 			'image_url' 		=> 'required|max:1000',
 		], [
 			'title.required' 				=> 'Antrastes laukelis yra privalomas',
@@ -75,7 +75,7 @@ class DishController extends Controller
 		$dish->image_url = $request->image_url;
 		$dish->description = $request->description;
 		$dish->save();
-		return redirect()->route('products.show', $dish->id);
+		return redirect()->route('dishes.show', $dish->id);
 	}
 
 	public function destroy(Request $request) {

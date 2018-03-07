@@ -7,11 +7,20 @@
 				@csrf
 				@method('PUT')
 				<div class="form-group">
-					<label class="px-3" for="title">Title</label>
+					<label class="px-3" for="title">Title: </label>
 					<input name="title" type="text" class="form-control px-3 @if($errors->has('title')) is-invalid @endif" id="title" placeholder="Enter title" value="{{ old('title', $dish->title) }}">
 					@if($errors->has('title'))
 					<div class="invalid-feedback px-3">
 						{{ $errors->first('title') }}
+					</div>
+					@endif
+				</div>
+				<div class="form-group">
+					<label class="px-3" for="title">Dish Image: </label>
+					<input name="image_url" type="text" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url', $dish->image_url) }}">
+					@if($errors->has('image_url'))
+					<div class="invalid-feedback px-3">
+						{{ $errors->first('image_url') }}
 					</div>
 					@endif
 				</div>

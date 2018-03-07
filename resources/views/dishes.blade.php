@@ -8,8 +8,8 @@
 										@component('components/card', [
 										'dish'		=> $dish,
 										'single' 	=> FALSE,
-										'name' 		=> 'Delete Dish',
-										'route'		=> 'dishes.destroy',
+										'name'		=> '',
+										'route'		=> '',
 										])
 										@endcomponent
 						@endforeach
