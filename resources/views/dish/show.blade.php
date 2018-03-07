@@ -7,10 +7,8 @@
 			</div>
 			<section>
 				<div class="row justify-content-center">
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 						@component('components/card', ['dish'=>$dish, 'admin' => TRUE])
 						@endcomponent
-					</div>
 				</div>
 			</section>
 		</div>
