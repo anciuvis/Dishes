@@ -7,7 +7,7 @@
 			</div>
 			<section>
 				<div class="row justify-content-center">
-						@component('components/card', ['dish'=>$dish, 'admin' => TRUE])
+						@component('components/card', ['dish'=>$dish, 'single' => TRUE])
 						@endcomponent
 				</div>
 			</section>

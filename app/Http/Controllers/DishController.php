@@ -11,12 +11,16 @@ class DishController extends Controller
 	public function index()
 	{
 		$dishes = Dish::all();
-		return view('dishes', [ 'dishes' => $dishes ]);
+		return view('dishes', [
+			'dishes' => $dishes,
+		]);
 	}
 
 	public function show(Request $request) {
 		$dish = Dish::findOrFail($request->id);
-		return view('dish/show', ['dish' => $dish]);
+		return view('dish/show', [
+			'dish' => $dish,
+		]);
 	}
 
 	public function create() {
@@ -52,7 +56,7 @@ class DishController extends Controller
 	public function edit(Request $request) {
 		$dish = Dish::find($request->id);
 		return view('dish/edit', [
-			'product'				=> $product
+			'product' => $product
 		]);
 	}
 
