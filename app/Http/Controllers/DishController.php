@@ -62,7 +62,7 @@ class DishController extends Controller
 	public function edit(Request $request) {
 		$dish = Dish::find($request->id);
 		return view('dish/edit', [
-			'product' => $product
+			'dish' => $dish
 		]);
 	}
 

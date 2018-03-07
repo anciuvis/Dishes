@@ -9,9 +9,7 @@
 			@if ($single) {{ $dish->description }} @else {{ str_limit($dish->description, 90) }} @endif
 		</li>
 		<li class="list-group-item">Price: {{ $dish->price }} $</li>
-		<form class="" action="index.html" method="post">
-		</form>
-		<form method="POST" action="http://pro.viktoraslava.lt/cart">
+		<form method="POST" action="">
 			<a href="#" class="js-add-to-cart btn btn-info btn-block" name="read">Add to cart</a>
 		</form>
 </ul>
