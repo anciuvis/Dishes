@@ -10,6 +10,9 @@ class DishController extends Controller
 {
 	public function __construct() {
 		$this->middleware('admin')->except('index', 'show');
+		// pries tai reikia dar ideti i app/Http/Kernel.php faila i gala i $routeMiddleware:
+		// 'admin' => \App\Http\Middleware\Admin::class,
+		// - kelia iki klases, su tokiu pavadinimu kaip iskvieciam
 	}
 
 	public function index()
