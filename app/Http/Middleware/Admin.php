@@ -16,7 +16,15 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-			Auth::user(); // returnina prisijungusi vartotoja
-			return $next($request);
-    }
+			// Auth::user() - returnina prisijungusi vartotoja
+			if(Auth::check()) { // Auth::check() returnina True/false, ar prisijunges ar ne
+				if (Auth::user()->role = 'admin') { // jei userio role yra admin
+					return $next($request);// cia praeina laisvai jeigu salyga ivykdyta, tokia logika
+				} else {
+					return abort (404, 'You have to be an admin'); // cia nepraeina, nes ne adminas
+				}
+			} else {
+				return abort (404, 'You have to be logged in'); // neleidzia praeiti irgi, duoda aborto zinute
+			}
+		}
 }
