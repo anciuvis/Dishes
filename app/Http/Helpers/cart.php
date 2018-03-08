@@ -22,10 +22,10 @@ class Cart {
 		$items = CartModel::where('remember_token', $token)->whereNull('order_id')->get();
 		// var_dump($items[0]->dish->price)
 		$total = 0;
-		foreach ($items as $key) {
-			$total += $key->dish->price;
+		foreach ($items as $item) {
+			$total += $item->dish->price;
 		}
-		return $total;
+		return number_format($total, 2);
 	}
 
 	public static function vat() {

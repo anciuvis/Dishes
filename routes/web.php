@@ -29,7 +29,7 @@ Route::put('/dish/{id}', 'DishController@update')->name('dishes.update');
 Route::delete('/dish/{id}', 'DishController@destroy')->name('dishes.destroy');
 
 // php artisan make:controller XXController --resource --model=XX - sukurti CRUD routus tam modeliui
-// daroma VIETOJ komandos make:controller, bet po Route::resource sitos eilutes:
+// daroma VIETOJ komandos make:controller, bet po parasymo Route::resource sitos eilutes:
 Route::resource('orders', 'OrderController');
 Route::resource('carts', 'CartController');
 Route::resource('reservations', 'ReservationController');

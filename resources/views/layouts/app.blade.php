@@ -56,11 +56,12 @@
                             </li>
                         @endguest
 														<li class="nav-item">
-															<a href="#">Cart {{ Cart::count() }}</a>
+															<a href="{{ route('carts.index') }}">Cart ({{ Cart::count() }}) - {{ Cart::total() }} $</a>
 															<!-- reikia kviesti count() su skliaustais - nes metodas -->
 															<!-- galim kviesti visuose vietuose -->
-															{{ Cart::total() }}
-															
+															<!-- {{ csrf_token() }} -->
+															<!-- cia kad rodytu tokena savo jei norim perziureti koks jis yra -->
+
 														</li>
                     </ul>
                 </div>

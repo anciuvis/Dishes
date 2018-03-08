@@ -10,7 +10,7 @@
 		</li>
 		<li class="list-group-item">Price: {{ $dish->price }} $</li>
 		<form method="POST" action="">
-			<a href="#" class="js-add-to-cart btn btn-info btn-block mb-1" name="read">Add to cart</a>
+			<a href="#" class="js-add-to-cart btn btn-dark btn-block mb-1" name="read">Add to cart</a>
 		</form>
 		@component('components/edit', [
 			'id' 		=> $dish->id,

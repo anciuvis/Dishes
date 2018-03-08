@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
 	public function __construct() {
-		$this->middleware('admin')->except('index', 'show');
+		$this->middleware('admin')->except('index');
 	}
-	
+
 		/**
      * Display a listing of the resource.
      *
@@ -18,7 +18,12 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+			$token = csrf_token();
+			$cart = Cart::where('remember_token', $token)->whereNull('order_id')->get();
+			// dd($cart);
+			return view('cart', [
+				'cart' => $cart,
+			]);
     }
 
     /**
