@@ -18,6 +18,11 @@
 					<div class="">
 						<h2  class="d-flex justify-content-between">Total: <p class="badge badge-success">{{ number_format($item->dish_id, 2) }} $</p></h2>
 					</div>
+					@component('components/create', [
+						'name'	=> 'Create order',
+						'route'		=> 'orders.create'
+					])
+					@endcomponent
 		</div>
 	</body>
 @endsection
