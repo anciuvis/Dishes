@@ -2,6 +2,9 @@
 @section('content')
 	<body>
 		<div class="container w-75">
+			<div class="mb-3">
+				<a href="{{ route('dishes') }}"><button class="btn btn-warning">Back</button></a>
+			</div>
 			<h2 class="text-center">Update Dish form</h2>
 			<form action="{{ route('dishes.update', $dish->id) }}" method="POST" class="needs-validation">
 				@csrf

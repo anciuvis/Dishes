@@ -2,7 +2,9 @@
 @section('content')
 	<div class="container">
 		<hr>
-		<hr>
+		<div class="mb-3">
+			<a href="{{ route('dishes') }}"><button class="btn btn-warning">Back</button></a>
+		</div>
 		<hr>
 		<h1>Contact page</h1>
 		<div class="row">

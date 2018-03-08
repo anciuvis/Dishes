@@ -3,7 +3,7 @@
 	<body>
 		<div class="container">
 			<div class="mb-3">
-				<a href="{{ route('dishes') }}"><button class="btn btn-danger">Back</button></a>
+				<a href="{{ route('dishes') }}"><button class="btn btn-warning">Back</button></a>
 			</div>
 			<section>
 				<div class="row justify-content-center">
