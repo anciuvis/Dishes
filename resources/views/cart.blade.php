@@ -9,14 +9,14 @@
 						])
 						@endcomponent
 					@endforeach
-					<div class="d-flex justify-content-between">
-						<h2>Sub-total: <p class="badge badge-primary pull-right">{{ number_format($item->dish_id, 2) }} $</p></h2>
+					<div>
+						<h2 class="d-flex justify-content-between">Sub-total: <p class="badge badge-primary pull-right">{{ number_format($item->dish_id, 2) }} $</p></h2>
 					</div>
 					<div class="">
-						<h2 class="w-100">VAT: <p class="badge badge-info">{{ number_format($item->dish_id, 2) }} $</p></h2>
+						<h2 class="d-flex justify-content-between">VAT: <p class="badge badge-info">{{ number_format($item->dish_id, 2) }} $</p></h2>
 					</div>
-					<div class="d-flex justify-content-between">
-						<h2 class="strong">Total: <p class="badge badge-success">{{ number_format($item->dish_id, 2) }} $</p></h2>
+					<div class="">
+						<h2  class="d-flex justify-content-between">Total: <p class="badge badge-success">{{ number_format($item->dish_id, 2) }} $</p></h2>
 					</div>
 		</div>
 	</body>

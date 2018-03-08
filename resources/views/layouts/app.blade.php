@@ -27,6 +27,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+											<li class="nav-item">
+												<a class="nav-link" href="{{ url('/contact') }}">
+													Contacts
+												</a>
+											</li>
 
                     </ul>
 
@@ -37,6 +42,8 @@
                             <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else
+														<li><a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a></li>
+														<li><a class="nav-link" href="{{ route('orders.index') }}">Orders</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -55,13 +62,11 @@
                                 </div>
                             </li>
                         @endguest
-														<li class="nav-item">
-															<a href="{{ route('carts.index') }}">Cart ({{ Cart::count() }}) - {{ Cart::total() }} $</a>
+														<li class="nav-item"><a class="nav-link" href="{{ route('carts.index') }}">Cart ({{ Cart::count() }}) - {{ Cart::total() }} $</a>
 															<!-- reikia kviesti count() su skliaustais - nes metodas -->
 															<!-- galim kviesti visuose vietuose -->
 															<!-- {{ csrf_token() }} -->
 															<!-- cia kad rodytu tokena savo jei norim perziureti koks jis yra -->
-
 														</li>
                     </ul>
                 </div>
