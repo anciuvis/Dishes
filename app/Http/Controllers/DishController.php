@@ -54,10 +54,11 @@ class DishController extends Controller
 		$dish->title = $request->title;
 		$dish->price = $request->price;
 		$dish->description = $request->description;
-		$dish->image_url = $request->category;
+		$dish->image_url = $request->image_url;
 		$dish->save();
 		return redirect()->route('dishes.show', $dish->id);
 	}
+	
 
 	public function edit(Request $request) {
 		$dish = Dish::find($request->id);

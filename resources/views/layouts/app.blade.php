@@ -31,7 +31,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
@@ -55,6 +55,13 @@
                                 </div>
                             </li>
                         @endguest
+														<li class="nav-item">
+															<a href="#">Cart {{ Cart::count() }}</a>
+															<!-- reikia kviesti count() su skliaustais - nes metodas -->
+															<!-- galim kviesti visuose vietuose -->
+															{{ Cart::total() }}
+															
+														</li>
                     </ul>
                 </div>
             </div>

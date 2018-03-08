@@ -2,14 +2,17 @@
 @section('content')
 	<body>
 		<div class="container">
+			@component('components/create', [
+				'name'	=> 'Create Dish',
+				'route'		=> 'dishes.create'
+			])
+			@endcomponent
 			<section>
 				<div class="row justify-content-center">
 						@foreach($dishes as $dish)
 										@component('components/card', [
 										'dish'		=> $dish,
 										'single' 	=> FALSE,
-										'name'		=> '',
-										'route'		=> '',
 										])
 										@endcomponent
 						@endforeach

@@ -209,6 +209,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 				'Input' => Illuminate\Support\Facades\Input::class, // prirasom, kad uzsikrautu
+				'Cart' => App\Http\Helpers\Cart::class, // prirasom, kad uzsikrautu
 
     ],
 

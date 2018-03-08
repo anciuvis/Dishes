@@ -18,7 +18,7 @@ class CreateCartsTable extends Migration
 						$table->rememberToken();
 						$table->integer('user_id')->unsigned();
 						$table->integer('dish_id')->unsigned();
-						$table->integer('order_id')->unsigned();
+						$table->integer('order_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
