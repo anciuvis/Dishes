@@ -13,6 +13,7 @@
 						{{ $errors->first('title') }}
 					</div>
 					@endif
+
 				</div>
 				<div class="form-group">
 					<label class="px-3" for="image_url">Dish Image: </label>

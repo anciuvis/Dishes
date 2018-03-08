@@ -56,9 +56,9 @@ class DishController extends Controller
 		$dish->description = $request->description;
 		$dish->image_url = $request->image_url;
 		$dish->save();
-		return redirect()->route('dishes.show', $dish->id);
+		return redirect()->route('dishes');
 	}
-	
+
 
 	public function edit(Request $request) {
 		$dish = Dish::find($request->id);
@@ -76,7 +76,7 @@ class DishController extends Controller
 		$dish->image_url = $request->image_url;
 		$dish->description = $request->description;
 		$dish->save();
-		return redirect()->route('dishes.show', $dish->id);
+		return redirect()->route('dishes');
 	}
 
 	public function destroy(Request $request) {

@@ -8,7 +8,7 @@
 			])
 			@endcomponent
 			<section>
-				<div class="row justify-content-center">
+				<div class="row justify-content-center ml-0">
 						@foreach($dishes as $dish)
 										@component('components/card', [
 										'dish'		=> $dish,
