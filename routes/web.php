@@ -18,6 +18,7 @@
 Auth::routes(); // sukuria routus registracijai, loginui bei pass resetui
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'ContactController@index')->name('contact');
 
 // DISHES routes
 Route::get('/', 'DishController@index')->name('dishes');

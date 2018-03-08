@@ -38,7 +38,7 @@ class DishController extends Controller
 		$request->validate([
 			'title' 				=> 'required|max:300',
 			'price' 				=> 'required|numeric|min:0|max:100',
-			'description' 	=> 'required|max:2000',
+			'description' 	=> 'required|max:3000',
 			'image_url' 		=> 'required|max:1000',
 		], [
 			'title.required' 				=> 'Antrastes laukelis yra privalomas',
