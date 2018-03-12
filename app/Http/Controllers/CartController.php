@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Dish;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
 	public function __construct() {
-		$this->middleware('admin')->except('index');
+		$this->middleware('admin')->except('index', 'show', 'store');
 	}
 
 		/**
@@ -44,7 +45,21 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+			// dd($request);
+
+			$this->validate($request,[
+				'dish_id' => 'required|numeric|digits_between:1,11'
+			]);
+
+			$cart = new Cart;
+      $cart->remember_token = $request->_token;
+      $cart->dish_id = $request->dish_id;
+      $cart->save();
+
+      $cart->dish; // fires cart->dish model realtionship
+
+      echo json_encode($cart);
+      // return view('home');
     }
 
     /**
@@ -87,8 +102,9 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
-    {
-        //
+    public function destroy(Request $request) {
+			$cart = Cart::find($request->id);
+			$cart->delete();
+			return redirect()->route('carts.index');
     }
 }

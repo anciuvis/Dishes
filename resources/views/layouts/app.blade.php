@@ -62,10 +62,13 @@
                                 </div>
                             </li>
                         @endguest
-														<li class="nav-item"><a class="nav-link" href="{{ route('carts.index') }}">Cart ({{ Cart::count() }}) - {{ Cart::total() }} $</a>
+														<li id="cart" class="nav-item">
+															<a class="nav-link" href="{{ route('carts.index') }}">
+																Cart (<span class="cart-size">{{ Cart::count() }}</span>) - <span class="cart-total">{{ Cart::total() }}</span> $
+															</a>
 															<!-- reikia kviesti count() su skliaustais - nes metodas -->
 															<!-- galim kviesti visuose vietuose -->
-															<!-- {{ csrf_token() }} -->
+															{{ csrf_token() }}
 															<!-- cia kad rodytu tokena savo jei norim perziureti koks jis yra -->
 														</li>
                     </ul>
@@ -80,5 +83,55 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+		<script type="text/javascript">
+
+			// DOMContentLoaded
+			$(document).ready(function() {
+				// alert('Document ready');
+
+				// uzdedam Submit ivyki ant formos. e=event
+				$('.js-cart-form').on('submit', function(e) {
+					// alert('onsubmit ivyko');
+					e.preventDefault();
+
+					// console.log($(this).attr('action')); // paima 'sitos' formos atributa 'action';
+
+					// console.log($(this).serialize()); // paima 'sitos' formos elementu reiksmes. paima serializuota eilute su jquery is formos
+
+					// ajax uzklausa
+					$.ajax({
+						method: "POST",
+						url: $(this).attr('action'),
+						data: $(this).serialize(), // dinaminis sprendimas
+						success: function( data ) {
+							alert( "Data Saved: " + data );
+							let parsedData = $.parseJSON(data),
+									cartSize = parseFloat($('#cart .cart-size').text()), // converts string to number
+									cartTotal = parseFloat($('#cart .cart-total').text()); // converts string to number
+									// cartTotal = parseFloat($('#cart .cart-total').text().replace(',', ''));
+
+							cartSize++;
+							cartTotal += parsedData.dish.price;
+							$('#cart .cart-size').text(cartSize); // Changes the text for cart-size
+							$('#cart .cart-total').text(cartTotal.toFixed(2)); // suapvalins iki 2 po kablelio,konvertuos i stringa
+							// $('#cart .cart-total').text(cartTotal.toLocaleString('en-GB', { minimumFractionDigits: 2 }));
+
+							let alert = $('<div class="alert alert-warning" style="position: fixed; width:90%; left:0;">');
+
+							console.log(cartSize);
+							console.log(cartTotal);
+							console.log(parsedData.dish.price);
+						},
+						error: function( msg ) {
+							alert( "Data Saved: " + msg );
+						},
+						done: function( msg ) {
+							alert( "Data Saved: " + msg );
+						}
+					});
+
+			});
+		});
+		</script>
 </body>
 </html>

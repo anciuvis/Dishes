@@ -5,21 +5,23 @@
 	</li>
 	<li class="list-group-item d-flex">
 		<div class="col-md-3">
-			<a href="{{ $item->dish_id }}">
-				<img class="img-responsive" src="{{ $item->dish_id }}">
+			<a href="#">
+				<img class="img-responsive" src="{{ $item->dish->image_url }}">
 			</a>
 		</div>
 		<div class="col-md-6">
-			{{ $item->dish_id }}
+			{{ $item->dish->title }}
 			<br>
-			Price: <span class="badge badge-success">{{ $item->dish_id }} $</span>
+			Price: <span class="badge badge-success">{{ $item->dish->price }} $</span>
 		</div>
 		<div class="col-md-3">
-			<form method="POST" action="">
-				<input type="hidden" name="_method" value="DELETE">
-				<input type="hidden" name="_token" value="vrGU1xE9aGRtKlHJpAqmrD2DDH0EGlLkQCX7l6eS">
-				<button class="btn btn-danger">Delete from cart</button>
-			</form>
+			{{-- $item->id --}}
+			@component('components/delete', [
+				'id' 		=> $item->id,
+				'name'	=> 'Delete from cart',
+				'route'		=> 'carts.destroy'
+			])
+			@endcomponent
 		</div>
 	</li>
 </ul>

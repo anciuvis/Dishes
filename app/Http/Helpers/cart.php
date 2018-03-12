@@ -25,7 +25,7 @@ class Cart {
 		foreach ($items as $item) {
 			$total += $item->dish->price;
 		}
-		return number_format($total, 2);
+		return number_format($total, 2, '.', '');
 	}
 
 	public static function vat() {
