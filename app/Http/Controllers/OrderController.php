@@ -23,7 +23,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-			$orders = Order::all();
+			if (Auth::check() && Auth::user()->role == 'admin') {
+				$orders = Order::all();
+			}
+			else {
+				$orders = Order::where('user_id', Auth::user()->id)->get();
+			}
 			return view('orders', [
 				'orders' => $orders,
 			]);

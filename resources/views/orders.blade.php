@@ -2,7 +2,7 @@
 @section('content')
 	<div class="container w-75">
 
-		<h1>Orders ()</h1>
+		<h1>Orders ({{ count($orders) }} )</h1>
 
 		<div class="panel panel-default">
 			<table>
