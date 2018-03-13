@@ -89,7 +89,7 @@
 			$(document).ready(function() {
 				// alert('Document ready');
 
-				// uzdedam Submit ivyki ant formos. e=event
+				// uzdedam Submit ivyki ant formos. eevent
 				$('.js-cart-form').on('submit', function(e) {
 					// alert('onsubmit ivyko');
 					e.preventDefault();
@@ -104,7 +104,7 @@
 						url: $(this).attr('action'),
 						data: $(this).serialize(), // dinaminis sprendimas
 						success: function( data ) {
-							alert( "Data Saved: " + data );
+							// alert( "Data Saved: " + data );
 							let parsedData = $.parseJSON(data),
 									cartSize = parseFloat($('#cart .cart-size').text()), // converts string to number
 									cartTotal = parseFloat($('#cart .cart-total').text()); // converts string to number
@@ -116,11 +116,15 @@
 							$('#cart .cart-total').text(cartTotal.toFixed(2)); // suapvalins iki 2 po kablelio,konvertuos i stringa
 							// $('#cart .cart-total').text(cartTotal.toLocaleString('en-GB', { minimumFractionDigits: 2 }));
 
-							let alert = $('<div class="alert alert-warning" style="position: fixed; width:90%; left:0;">');
+							let alert = $('<div class="alert alert-warning" style="position:fixed; width:90%; left:0; right:0; z-index: 5; margin: 0 auto; top: 50px;" role="alert">');
+								alert.html('Succesfully added one <strong>' + parsedData.dish.title + "</strong>, which price is " + parsedData.dish.price + '$');
+								alert.hide();
+							$('body .alert').fadeOut();
+							$('body').prepend(alert.fadeIn());
 
-							console.log(cartSize);
-							console.log(cartTotal);
-							console.log(parsedData.dish.price);
+							// console.log(cartSize);
+							// console.log(cartTotal);
+							// console.log(parsedData.dish.price);
 						},
 						error: function( msg ) {
 							alert( "Data Saved: " + msg );

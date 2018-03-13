@@ -20,13 +20,15 @@
 	@component('components/edit', [
 		'id' 		=> $dish->id,
 		'name'	=> 'Edit Dish',
-		'route'		=> 'dishes.edit'
+		'route'		=> 'dishes.edit',
+		'users'  => ['admin']
 	])
 	@endcomponent
 	@component('components/delete', [
 		'id' 		=> $dish->id,
 		'name'	=> 'Delete Dish',
-		'route'		=> 'dishes.destroy'
+		'route'		=> 'dishes.destroy',
+		'users'  => ['admin']
 	])
 	@endcomponent
 </ul>

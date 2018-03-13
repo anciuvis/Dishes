@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Cart;
 use App\Dish;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -56,7 +57,7 @@ class CartController extends Controller
       $cart->dish_id = $request->dish_id;
       $cart->save();
 
-      $cart->dish; // fires cart->dish model realtionship
+      $cart->dish; // fires cart->dish model relationship
 
       echo json_encode($cart);
       // return view('home');
@@ -103,7 +104,9 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request) {
-			$cart = Cart::find($request->id);
+			$token = csrf_token();
+			$cart = Cart::where('remember_token', $token)->where('id', $request->id); // kadangi trinam po viena itema - nebutina ->get()
+			// dd($cart);
 			$cart->delete();
 			return redirect()->route('carts.index');
     }

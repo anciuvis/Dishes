@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Cart;
 use Illuminate\Http\Request;
+use App\Http\Helpers\Cart as CartHelp;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -39,9 +42,24 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(Request $request) // reikia requesto jei kvieciamas tokenas is ten o ne is sesijos
     {
-        //
+			// dd($request);
+			$token = csrf_token(); // paimamas is sesijos, bet galima is is $request->_token
+			$cart = Cart::where('remember_token', $token)->whereNull('order_id')->get();
+			$order = new Order();
+			$order->user_id = Auth::user()->id;
+			$order->total_amount = CartHelp::total();
+			$order->tax_amount = CartHelp::vat();
+			$order->save();
+			foreach ($cart as $item) { // kadangi ->get() metodas grazina array - reikia prasukt ji per foreach kad suveiktu
+				$item->user_id = Auth::user()->id;
+				$item->order_id = $order->id;
+				$item->save();
+			}
+			$request->session()->flash('success', 'Order created successfully. Thank you for your order!');
+			return redirect()->route('orders.index');
     }
 
     /**

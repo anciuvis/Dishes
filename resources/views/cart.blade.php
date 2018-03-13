@@ -10,17 +10,16 @@
 						@endcomponent
 					@endforeach
 					<div>
-						<h2 class="d-flex justify-content-between">Sub-total: <p class="badge badge-primary pull-right">{{ number_format($item->dish_id, 2) }} $</p></h2>
+						<h2 class="d-flex justify-content-between">Sub-total: <p class="badge badge-primary pull-right">{{ Cart::total()-Cart::vat() }} $</p></h2>
 					</div>
 					<div class="">
-						<h2 class="d-flex justify-content-between">VAT: <p class="badge badge-info">{{ number_format($item->dish_id, 2) }} $</p></h2>
+						<h2 class="d-flex justify-content-between">VAT: <p class="badge badge-info">{{ Cart::vat() }} $</p></h2>
 					</div>
 					<div class="">
-						<h2  class="d-flex justify-content-between">Total: <p class="badge badge-success">{{ number_format($item->dish_id, 2) }} $</p></h2>
+						<h2  class="d-flex justify-content-between">Total: <p class="badge badge-success">{{ Cart::total() }} $</p></h2>
 					</div>
-					@component('components/create', [
-						'name'	=> 'Create order',
-						'route'		=> 'orders.create'
+					@component('components/checkout', [
+						'cartTotal' => Cart::total()
 					])
 					@endcomponent
 		</div>

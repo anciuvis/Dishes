@@ -81,6 +81,7 @@ class DishController extends Controller
 
 	public function destroy(Request $request) {
 		$dish = Dish::find($request->id);
+		// dd($request->id);
 		// $dish = Dish::find($request->id); // - jeigu reikia viena elementa pasirinkti
 		$dish->delete();
 		return redirect()->route('dishes');

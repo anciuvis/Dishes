@@ -4,7 +4,8 @@
 		<div class="container">
 			@component('components/create', [
 				'name'	=> 'Create Dish',
-				'route'		=> 'dishes.create'
+				'route'		=> 'dishes.create',
+				'users'  => ['admin']
 			])
 			@endcomponent
 			<section>

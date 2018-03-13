@@ -29,11 +29,10 @@ class Cart {
 	}
 
 	public static function vat() {
-
-		$token = csrf_token();
-		$count = CartModel::where('remember_token', $token)->whereNull('order_id')->count();
-		return $count;
-
+		$total = Cart::total();
+		$rate = 0.21;
+		$vat = $total * $rate;
+		return number_format($vat, 2, '.', '');
 	}
 }
 
