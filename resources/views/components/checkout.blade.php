@@ -4,7 +4,7 @@
 	</div>
 @elseif($cartTotal == 0)
 	<div class="row">
-		<a href="{{ route('dish.index') }}" class="btn btn-lg btn-success btn-block">Add something</a>
+		<a href="{{ route('dishes') }}" class="btn btn-lg btn-success btn-block">Add something</a>
 	</div>
 @else
 	<div class="row">

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Cart;
+use App\Mail\OrderCreated;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Cart as CartHelp;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class OrderController extends Controller
 {
@@ -53,11 +56,15 @@ class OrderController extends Controller
 			$order->total_amount = CartHelp::total();
 			$order->tax_amount = CartHelp::vat();
 			$order->save();
+
 			foreach ($cart as $item) { // kadangi ->get() metodas grazina array - reikia prasukt ji per foreach kad suveiktu
 				$item->user_id = Auth::user()->id;
 				$item->order_id = $order->id;
 				$item->save();
 			}
+
+			Mail::to($request->user())->send(new OrderCreated($order));
+
 			$request->session()->flash('success', 'Order created successfully. Thank you for your order!');
 			return redirect()->route('orders.index');
     }
