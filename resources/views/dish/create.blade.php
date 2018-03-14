@@ -5,7 +5,8 @@
 			<a href="{{ route('dishes') }}"><button class="btn btn-warning">Back</button></a>
 		</div>
 		<h2 class="text-center">Create Dish form</h2>
-		<form action="{{ route('dishes.store') }}" method="POST" class="needs-validation">
+		<form action="{{ route('dishes.store') }}" method="POST" class="needs-validation" enctype="multipart/form-data">
+			<!-- butinas kad siusti failus (prikabintus) enctype=multipart/formdata -->
 			@csrf
 			<div class="form-group">
 				<label class="px-3" for="title">Title: </label>
@@ -19,7 +20,7 @@
 			</div>
 			<div class="form-group">
 				<label class="px-3" for="image_url">Dish Image: </label>
-				<input name="image_url" type="text" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url') }}">
+				<input name="image_url" type="file" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url') }}">
 				@if($errors->has('image_url'))
 				<div class="invalid-feedback px-3">
 					{{ $errors->first('image_url') }}

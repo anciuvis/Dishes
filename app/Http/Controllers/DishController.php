@@ -39,7 +39,7 @@ class DishController extends Controller
 			'title' 				=> 'required|max:300',
 			'price' 				=> 'required|numeric|min:0|max:100',
 			'description' 	=> 'required|max:3000',
-			'image_url' 		=> 'required|max:1000',
+			'image_url' 		=> 'required|mimes:jpeg,bmp,png|max:500',
 		], [
 			'title.required' 				=> 'Antrastes laukelis yra privalomas',
 			'price.required' 				=> 'Kainos laukelis yra privalomas',
@@ -50,15 +50,25 @@ class DishController extends Controller
 
 	public function store(Request $request) {
 		$this->validation($request);
+		// i storage/app ikelia default, tolimesni kelia rnurodome
+		$path = $request->file('image_url')->store('public/dishes');
+		// public/dishes/*****
+		// reikia dar php artisan storage:link irasti, dirbant su storagu - sukuria SYMLINKa
+		$path = str_replace('public', 'storage', $path);
+		// storage/dishes/****
+		// dd($path);
+		// $request->image_url = $path;
+		// Dish::create(\Input::all());
+		// // - vietoj to kad atskirai viska aprasineti:
 		$dish = new Dish();
 		$dish->title = $request->title;
 		$dish->price = $request->price;
 		$dish->description = $request->description;
-		$dish->image_url = $request->image_url;
+		$dish->image_url = $path;
+		// $request->image_url pakeisti i $path kad butu failo ikelimas i duombaze
 		$dish->save();
 		return redirect()->route('dishes');
 	}
-
 
 	public function edit(Request $request) {
 		$dish = Dish::find($request->id);

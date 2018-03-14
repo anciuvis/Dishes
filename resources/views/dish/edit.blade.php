@@ -6,7 +6,7 @@
 				<a href="{{ route('dishes') }}"><button class="btn btn-warning">Back</button></a>
 			</div>
 			<h2 class="text-center">Update Dish form</h2>
-			<form action="{{ route('dishes.update', $dish->id) }}" method="POST" class="needs-validation">
+			<form action="{{ route('dishes.update', $dish->id) }}" method="POST" class="needs-validation" enctype="multipart/form-data">
 				@csrf
 				@method('PUT')
 				<div class="form-group">
@@ -20,7 +20,7 @@
 				</div>
 				<div class="form-group">
 					<label class="px-3" for="image_url">Dish Image: </label>
-					<input name="image_url" type="text" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url', $dish->image_url) }}">
+					<input name="image_url" type="file" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url', $dish->image_url) }}">
 					@if($errors->has('image_url'))
 					<div class="invalid-feedback px-3">
 						{{ $errors->first('image_url') }}
