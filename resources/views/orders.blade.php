@@ -5,7 +5,7 @@
 		<h1>Orders ({{ count($orders) }})</h1>
 
 		<div class="panel panel-default">
-			<table>
+			<table class="table">
 				<thead>
 					<tr>
 						<th>#</th>

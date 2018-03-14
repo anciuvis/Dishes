@@ -11,7 +11,7 @@
 		@endcomponent
 
 		<div class="panel panel-default">
-			<table>
+			<table class="table">
 				<thead>
 					<tr>
 						<th>#</th>
