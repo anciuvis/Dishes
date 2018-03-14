@@ -21,7 +21,7 @@
 				<div class="form-group">
 					<label class="px-3" for="image_url">Dish Image: </label>
 					<input name="image_url" type="file" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url', $dish->image_url) }}">
-					<div class="mt-1 mx-auto">
+					<div class="col-md-5 mt-2">
 						<img src="{{ $dish->image_url }}" alt="photo">
 					</div>
 					@if($errors->has('image_url'))
@@ -50,6 +50,10 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Update Dish information</button>
 			</form>
+			<div class="col-md-5 mt-2 mb-2">
+				<img src="{{ $dish->image_url }}" width="350" alt="photo">
+			</div>
+			<a href="{{ route('dishes.download', $dish->id) }}" class="btn btn-success">Download</a>
 		</div>
 	</body>
 @endsection

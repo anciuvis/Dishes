@@ -11,7 +11,7 @@ class DishController extends Controller
 {
 	public function __construct() {
 		$this->middleware('admin')->except('index', 'show');
-		// pries tai reikia dar ideti i app/Http/Kernel.php faila i gala i $routeMiddleware:
+		// pries tai reikia dar nurodyti i app/Http/Kernel.php faila i gala i $routeMiddleware:
 		// 'admin' => \App\Http\Middleware\Admin::class,
 		// - kelia iki klases, su tokiu pavadinimu kaip iskvieciam
 	}
@@ -83,6 +83,27 @@ class DishController extends Controller
 		Storage::delete($oldPath);
 	}
 
+	public function download(Dish $dish) {
+		$path = str_replace('storage', 'public', $dish->image_url);
+		// dd($path);
+		// return Storage::download($path);
+
+		// nuotrauku atidarymui (o ne parsisiuntimui)
+		$booleanPng = strpos($path, '.png');
+		$booleanJpeg = strpos($path, '.jpeg');
+		$booleanJpg = strpos($path, '.jpg');
+		$type = '';
+		if ($booleanPng) {
+			$type = 'image/png';
+		} elseif ($booleanJpeg || $booleanJpg) {
+			$type = 'image/jpeg';
+		}
+		return response(Storage::get($path))->header('Content-Type', $type);
+		// Storage::download('dishes/info.csv');
+
+	}
+
+
 	public function update(Request $request, Dish $dish) {
 		// echo 'update';
 		$dish = Dish::find($request->id);
@@ -123,4 +144,5 @@ class DishController extends Controller
 		$dish->delete();
 		return redirect()->route('dishes');
 	}
+
 }

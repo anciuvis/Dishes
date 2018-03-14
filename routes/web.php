@@ -28,6 +28,7 @@ Route::get('/dish/{id}', 'DishController@show')->name('dishes.show');
 Route::get('/dish/{id}/edit', 'DishController@edit')->name('dishes.edit');
 Route::put('/dish/{id}', 'DishController@update')->name('dishes.update');
 Route::delete('/dish/{id}', 'DishController@destroy')->name('dishes.destroy');
+Route::get('/dish/{dish}/download', 'DishController@download')->name('dishes.download');
 
 // php artisan make:controller XXController --resource --model=XX - sukurti CRUD routus tam modeliui
 // daroma VIETOJ komandos make:controller, bet po parasymo Route::resource sitos eilutes:
