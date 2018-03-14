@@ -5,7 +5,7 @@
 			@foreach($order->carts as $cart)
 				<li>
 					<small>
-						<a href="#">{{ $cart->dish->title }}</a>
+						<a href="{{ route('dishes.show', $cart->dish->id) }}">{{ $cart->dish->title }}</a>
 					</small>
 				</li>
 			@endforeach

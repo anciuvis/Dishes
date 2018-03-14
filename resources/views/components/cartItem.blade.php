@@ -1,11 +1,10 @@
 <ul class="list-group mb-3">
-
 	<li class="list-group-item list-group-item-success">
 		{{ $item->dish->title }}
 	</li>
 	<li class="list-group-item d-flex">
 		<div class="col-md-3">
-			<a href="#">
+			<a href="{{ route('dishes.show', $item->dish->id) }}">
 				<img class="img-responsive" src="{{-- $item->dish->image_url --}}">
 			</a>
 		</div>
