@@ -106,7 +106,7 @@ class DishController extends Controller
 
 	public function update(Request $request, Dish $dish) {
 		// echo 'update';
-		$dish = Dish::find($request->id);
+		$dish = Dish::find($request->id); // sito reikia jeigu web.php routuose nurodyta su {id} - kitaip {dish} ir veiks su Dish $dish
 		$rules = [
 			'title'  => 'required|min:3',
 			'description' => 'required',
