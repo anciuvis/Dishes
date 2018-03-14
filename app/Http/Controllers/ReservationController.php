@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -18,7 +19,12 @@ class ReservationController extends Controller
      */
     public function index()
     {
-			$reservations = Reservation::all();
+			if (Auth::check() && Auth::user()->role == 'admin') {
+				$reservations = Reservation::all();
+			}
+			else {
+				$reservations = Reservation::where('user_id', Auth::user()->id)->get();
+			}
 			return view('reservations', [
 				'reservations' => $reservations,
 			]);

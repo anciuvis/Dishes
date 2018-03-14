@@ -15,8 +15,9 @@ class DishSeeder extends Seeder
 			$faker = Faker\Factory::create();
 
 			foreach (range(1, 5) as $key) {
-				$url = $faker->image('/home/vagrant/Code/Dishes/public/tmp', 800, 600, 'food');
-				$url = str_replace('/home/vagrant/Code/Dishes/public/', '', $url);
+				$url = $faker->image('/home/vagrant/Code/Dishes/storage/app/public/dishes', 800, 600, 'food');
+				$url = str_replace('/home/vagrant/Code/Dishes/storage/app/public', '/storage', $url);
+				
 				$dish = new Dish;
 				$dish->title = $faker->colorName;
 				$dish->description = $faker->sentence(300);

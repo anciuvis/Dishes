@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Dish;
 
 class DishController extends Controller
@@ -54,7 +55,7 @@ class DishController extends Controller
 		$path = $request->file('image_url')->store('public/dishes');
 		// public/dishes/*****
 		// reikia dar php artisan storage:link irasti, dirbant su storagu - sukuria SYMLINKa
-		$path = str_replace('public', 'storage', $path);
+		$path = str_replace('public', '/storage', $path);
 		// storage/dishes/****
 		// dd($path);
 		// $request->image_url = $path;
@@ -77,22 +78,48 @@ class DishController extends Controller
 		]);
 	}
 
-	public function update(Request $request) {
+	public function imageDelete($url) {
+		$oldPath = str_replace('storage', '/public', $url);
+		Storage::delete($oldPath);
+	}
+
+	public function update(Request $request, Dish $dish) {
 		// echo 'update';
-		$this->validation($request);
 		$dish = Dish::find($request->id);
+		$rules = [
+			'title'  => 'required|min:3',
+			'description' => 'required',
+			'price' => 'required|numeric',
+		];
+		if ($request->file('image_url')) {
+
+			$rules['image_url'] = 'mimes:jpeg,bmp,png|max:500';
+
+			$this->validate($request, $rules);
+
+			$this->imageDelete($dish->image_url);
+
+			$path = $request->file('image_url')->store('public/dishes');
+			$path = str_replace('public', '/storage', $path);
+			// storage/dishes/****
+		} else {
+			$this->validate($request, $rules);
+			$path = $dish->image_url;
+		}
+		// $this->validation($request);
 		$dish->title = $request->title;
 		$dish->price = $request->price;
-		$dish->image_url = $request->image_url;
+		$dish->image_url = $path;
 		$dish->description = $request->description;
 		$dish->save();
-		return redirect()->route('dishes');
+		return redirect()->route('dishes.edit', $dish->id);
 	}
 
 	public function destroy(Request $request) {
 		$dish = Dish::find($request->id);
 		// dd($request->id);
 		// $dish = Dish::find($request->id); // - jeigu reikia viena elementa pasirinkti
+		$this->imageDelete($dish->image_url);
 		$dish->delete();
 		return redirect()->route('dishes');
 	}

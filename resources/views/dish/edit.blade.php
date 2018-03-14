@@ -21,6 +21,9 @@
 				<div class="form-group">
 					<label class="px-3" for="image_url">Dish Image: </label>
 					<input name="image_url" type="file" class="form-control px-3 @if($errors->has('image_url')) is-invalid @endif" id="image_url" placeholder="Enter image source" value="{{ old('image_url', $dish->image_url) }}">
+					<div class="mt-1 mx-auto">
+						<img src="{{ $dish->image_url }}" alt="photo">
+					</div>
 					@if($errors->has('image_url'))
 					<div class="invalid-feedback px-3">
 						{{ $errors->first('image_url') }}
