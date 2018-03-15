@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
 					Mail::to('nonofthem@gmail.com')
 						->send(new OrderInfo($orders));
 
-				})->everyMinute();
+				})->daily();
 
 
     }
