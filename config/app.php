@@ -159,6 +159,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+				Novanti\LaravelPDF\PDFServiceProvider::class,
 
     ],
 
@@ -210,6 +211,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 				'Input' => Illuminate\Support\Facades\Input::class, // prirasom, kad uzsikrautu
 				'Cart' => App\Http\Helpers\Cart::class, // prirasom, kad uzsikrautu
+				'PDF' => Novanti\LaravelPDF\PDFFacade::class,
 
     ],
 

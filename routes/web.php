@@ -35,3 +35,8 @@ Route::get('/dish/{dish}/download', 'DishController@download')->name('dishes.dow
 Route::resource('orders', 'OrderController');
 Route::resource('carts', 'CartController');
 Route::resource('reservations', 'ReservationController');
+
+// generate PDF:
+Route::get('/pdf', function() {
+    return PDF::loadHTML('<strong>Hello World</strong>')->lowquality()->pageSize('A2')->stream();
+});

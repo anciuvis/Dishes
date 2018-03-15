@@ -29,20 +29,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function() {
-					// $users = User::where('id', 5);
-					// $users->delete();
-					$prevDay = time() - (24 * 60 * 60);
-					$prevDay = date("Y-m-d H:i:s", $prevDay);
-					$orders = Order::where('created_at', '>', $prevDay)->get();
-					// dd('update: ' . count($orders) . ' orders were made in last 24h');
-
-					Mail::to('nonofthem@gmail.com')
-						->send(new OrderInfo($orders));
-
-				})->daily();
-
-
+    //     $schedule->call(function() {
+		// 			// $users = User::where('id', 5);
+		// 			// $users->delete();
+		// 			$prevDay = time() - (24 * 60 * 60);
+		// 			$prevDay = date("Y-m-d H:i:s", $prevDay);
+		// 			$orders = Order::where('created_at', '>', $prevDay)->get();
+		// 			// dd('update: ' . count($orders) . ' orders were made in last 24h');
+		//
+		// 			Mail::to('nonofthem@gmail.com')
+		// 				->send(new OrderInfo($orders));
+		//
+		// 		})->daily();
+		//
+		//
     }
 
     /**
