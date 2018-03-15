@@ -38,5 +38,6 @@ Route::resource('reservations', 'ReservationController');
 
 // generate PDF:
 Route::get('/pdf', function() {
-    return PDF::loadHTML('<strong>Hello World</strong>')->lowquality()->pageSize('A2')->stream();
+    return PDF::loadHTML('<strong>Hello World</strong>')->lowquality()->pageSize('A4')->stream();
 });
+Route::get('/orders/{order}/invoice' , 'OrderController@invoice')->name('order.invoice')->middleware('auth');

@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
 						$table->integer('user_id')->unsigned();
 						$table->float('total_amount', 8, 4);
 						$table->float('tax_amount', 8, 4);
+						$table->softDeletes();
             $table->timestamps();
         });
     }

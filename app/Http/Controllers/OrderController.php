@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Helpers\Cart as CartHelp;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Novanti\LaravelPDF\PDFFacade as PDF;
 
 
 class OrderController extends Controller
@@ -119,4 +120,11 @@ class OrderController extends Controller
     {
         //
     }
+
+		public function invoice(Order $order) {
+			$html = view('orders.invoice', ['order'=>$order]);
+			return PDF::loadHTML($html)
+					->pageSize('A4')
+					->stream();
+		}
 }
