@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Nwe order created</title>
+    <title>New order created</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -280,7 +280,7 @@
                         </table>
 												<p>Orders for today:</p>
 												@foreach($orders as $order)
-													<li>{{ $order->user->name }}</li>
+													<li><a href="{{ route('orders.index') }}">{{ $order->user->name }} - {{ $order->total_amount }}</a></li>
 												@endforeach
 												<h5>Total Revenue for today:</h5>
 												<p>{{ $orders->sum('total_amount') }}</p>
