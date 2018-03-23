@@ -5,7 +5,7 @@
 			<img src="@if ($single){{'../'}}@endif{{ $dish->image_url }}" class="mx-auto img-responsive w-100 my-1" alt="picture"/>
 		</a>
 	</li>
-	<li class="list-group-item height-fix">
+	<li class="list-group-item" style="height: 90px;">
 		@if ($single) {{ $dish->description }} @else {{ str_limit($dish->description, 90) }} @endif
 	</li>
 	<li class="list-group-item">Price: {{ $dish->price }} $</li>

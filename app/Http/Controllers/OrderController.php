@@ -118,7 +118,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+      $order->delete();
+			return redirect()->route('orders.index');
     }
 
 		public function invoice(Order $order) {

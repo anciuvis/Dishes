@@ -68,7 +68,8 @@
 															</a>
 															<!-- reikia kviesti count() su skliaustais - nes metodas -->
 															<!-- galim kviesti visuose vietuose -->
-															{{ csrf_token() }}
+															{{-- csrf_token() --}}
+															<!-- patikrinimui galima matyt visad tokena dabartini: -->
 															<!-- cia kad rodytu tokena savo jei norim perziureti koks jis yra -->
 														</li>
                     </ul>
